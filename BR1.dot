@@ -1,0 +1,223 @@
+strict digraph BR1 {
+
+    edge [dir="back"]
+    
+    BR1 -> UPF [label="1 @ 4d"]
+    UPF -> PSL
+    UPF -> PSM
+    UPF -> FET
+    UPF -> NV1
+    UPF -> SAR
+    UPF -> COM
+
+    PSL -> PPF [label="1 @ 14h24m"]
+    PPF -> PG
+
+    PSM -> PPF [label="1 @ 9h36m"]
+    PPF -> PG
+
+    FET -> ASM [label="4 @ 9h36m"]
+    ASM -> FE
+    ASM -> TI
+
+    NV1 -> APF [label="1 @ 1d12h"]
+    APF -> WS
+    APF -> SNM
+
+    SAR -> ELP [label="1 @ 16h5m"]
+    ELP -> SEN
+    ELP -> PCB
+
+    COM -> APF [label="1 @ 18h"]
+    APF -> BWS
+    APF -> AAR
+    APF -> RAD
+
+    WS  -> APF [label="20@1d19h"]
+    APF -> DA
+    APF -> BWS
+
+    RAD -> EDM [label="1 @ 4h48m"]
+    EDM -> DCS
+    EDM -> SFK
+    EDM -> POW
+
+    SNM -> SL [label="2 @ 2d"]
+    SL  -> WAI
+    SL  -> DV
+    SL  -> IMM
+
+    BWS -> ELP [label="1 @12h"]
+    ELP -> MB
+    ELP -> DCM
+    ELP -> HD
+
+    AAR -> ELP [label="3 @ 16h5m"]
+    ELP -> KV
+    ELP -> AU
+    ELP -> PCB
+    ELP -> SWF
+
+    DA -> SE [label="1 @ 1d12h"]
+    SE -> SAL
+    SE -> LD
+    SE -> SA
+    SE -> ROM
+    
+    SAL -> SD [label="1 @ 1d12h"]
+    LD  -> SD [label="1 @ 12h"]
+    SA  -> SD [label="1 @ 1d"]
+    
+    ROM -> SCA [label="10 @ 7h10m"]
+    SCA -> PSS
+    SCA -> BGC
+    SCA -> SI
+    
+    POW -> ECA [label="1 @ 4h48"]
+    ECA -> NCS
+    ECA -> LI 
+
+    WAI -> SL [label="1 @ 2d"]
+    SL  -> NN
+    SL  -> ROM
+
+    IMM -> SL [label="1 @ 1d12h"]
+    SL  -> DA
+    SL  -> DD
+
+    HD  -> MCA [label="5 @ 16h5m"]
+    MCA -> RG
+    MCA -> DCS
+    MCA -> LDI
+
+    DV  -> SE [label="1 @ 1d12h"]
+
+    WAI -> SL [label="1 @ 2d"]
+    SL  -> NN
+    SL  -> ROM
+
+    NN  -> SE [label="1 @ 1d12h"]
+    SE  -> BAI
+    SE  -> MLI
+
+    DD  -> SE [label="1 @ 2d"]
+    SE  -> NF
+    SE  -> LD
+
+    BAI -> SD [label="1 @ 2d"]
+
+    LDI -> CLR [label="6 @ 8h24m"]
+    CLR -> GAL
+    CLR -> SI
+
+    MLI -> SD [label="1 @ 3d"]
+
+    NF  -> SD [label="1 @ 1d12h"]
+
+    RG  -> GF [label="10 @ 1d7h"]
+    GF  -> GL
+    GF  -> PG
+
+    SFK -> FS [label="16 x 2h53m"]
+    FS  -> FE
+    
+    SWF -> CLR [label="30 x 12h"]
+    CLR -> SI
+    CLR -> AL
+    
+    MB -> MCA [label="4 x 7h12m"]
+    MCA  -> RAM
+    MCA -> MPC
+    MCA -> PSM
+    MCA -> SFK
+    
+    SEN -> SCA [label="20 x 6h58m"]
+    SCA -> TRN
+    SCA -> H
+    SCA -> N
+    
+    PCB -> SCA [label="5 @ 6h43m"]
+    SCA -> SWF
+    SCA -> BCO
+    SCA -> PE
+    SCA -> BGO
+
+    DCM -> PPF [label="2 @ 12h"]
+    PPF -> PSM
+    PPF -> SFK
+    PPF -> PG
+
+    KV  -> WPL [label="1 @ 19h12m"]
+    WPL -> PG
+    WPL -> TCL
+
+    TCL -> LAB [label="3 @ 14h24m"]
+    LAB -> CL
+    LAB -> O
+    LAB -> H
+
+    RAM -> SCA [label="4 x 7h12m"]
+    SCA -> PSS
+    SCA -> CAP
+    SCA -> BCO
+
+    PSM -> PPF [label="1 9h36m"]
+    PPF -> PG
+
+    MPC -> SCA [label="10 x 10h5m"]
+    SCA -> SWF
+    SCA -> TRN
+    SCA -> BCO
+    
+    DCS -> PPF [label="2 x 7h12m"]
+    PPF -> SFK
+    PPF -> PG
+    PPF -> PSS
+    
+    NCS -> CLR [label="100 @ 14h24m"]
+
+    PSS -> PPF [label="1 x 4h48m"]
+    PPF -> PG
+    
+    CAP -> CLR [label="15 x 9h36m"]
+    CLR -> SI
+    CLR -> FE
+    
+    TRN -> CLR [label="10 x 6h"]
+    CLR -> AL
+    CLR -> SI
+    
+    BGC -> FS [label="10 x 7h12m"]
+    FS  -> BGO
+    FS  -> PE
+    
+    BGO -> FS [label="5 x 9h36m"]
+    FS -> AU
+    FS -> FE
+    
+    BCO -> FS [label="10 x 7h12m"]
+    FS  -> CU
+    FS  -> PE
+
+    LAB [shape=Mrecord, label="{LAB|SET 20 TEC 70}", style=filled, fillcolor=lightblue]
+    WPL [shape=Mrecord, label="{WPL|SET 70}", style=filled, fillcolor=green]
+    FS  [shape=Mrecord, label="{FS|SET 50}", style=filled, fillcolor=green]
+    GF  [shape=Mrecord, label="{GF|SET 80}", style=filled, fillcolor=green]
+    CLR [shape=Mrecord, label="{CLR|SET 25 TEC 15}", style=filled, fillcolor=green]
+    MCA [shape=Mrecord, label="{MCA|SET 20 TEC 20}", style=filled, fillcolor=lightblue]
+    ECA [shape=Mrecord, label="{ECA|SET 20 TEC 20}", style=filled, fillcolor=lightblue]
+    SE  [shape=Mrecord, label="{SE|ENG 30}", style=filled, fillcolor=pink]
+    SD  [shape=Mrecord, label="{SD|TEC 50}", style=filled, fillcolor=lightblue]
+    SCA [shape=Mrecord, label="{SCA|TEC 30}", style=filled, fillcolor=lightblue]
+    SL  [shape=Mrecord, label="{SL|SCI 20}", style=filled, fillcolor=hotpink]
+    EDM [shape=Mrecord, label="{EDM|SET 50}", style=filled, fillcolor=green]
+    UPF [shape=Mrecord, label="{UPF|PIO 20 SET 50}", style=filled, fillcolor=green]
+    PPF [shape=Mrecord, label="{PPF|SET 50}", style=filled, fillcolor=green]
+    ASM [shape=Mrecord, label="{ASM|TEC 50 ENG 20}", style=filled, fillcolor=lightblue]
+    APF [shape=Mrecord, label="{APF|TEC 60 ENG 20}", style=filled, fillcolor=lightblue]
+    ELP [shape=Mrecord, label="{ELP|TEC 40}", style=filled, fillcolor=lightblue]
+
+    AU [style=filled, fillcolor=yellow]
+    LI [style=filled, fillcolor=yellow]
+    N  [style=filled, fillcolor=yellow]
+}

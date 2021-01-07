@@ -1,0 +1,74 @@
+strict digraph HSS {
+
+    edge [dir="back"]
+
+    nodesep = 0.4
+    ranksep =0.8
+
+    subgraph cluster_CLF {
+        label = "CLF"
+        style = filled fillcolor=green 
+        HSS [shape=Mrecord, label="{20 HSS|24h}"]
+    }
+
+    subgraph cluster_SCA {
+        label = "SCA"
+        style = filled fillcolor=lightblue 
+        SEN [shape=Mrecord, label="{20 SEN|6h 58m}"]
+        PCB [shape=Mrecord, label="{5 PCB|6h 43m}"]
+    }
+
+    subgraph cluster_CLR {
+        label = "CLR"
+        style = filled fillcolor=green 
+        TRN [shape=Mrecord, label="{10 TRN|6h}"]
+        SWF [shape=Mrecord, label="{30 SWF|12h}"]   
+    }
+
+    subgraph cluster_LAB {
+        label = LAB
+        style = filled fillcolor=lightblue
+        BLE [shape=Mrecord, label="{3 BLE|12h}"]
+    }
+
+    subgraph cluster_FS {
+        label = FS
+        style = filled fillcolor=green 
+        BGO [shape=Mrecord, label="{5 BGO|9h 36m}"]
+        BCO [shape=Mrecord, label="{10 BCO|7h 12m}"]
+    }
+
+    HSS -> NL [label=5]
+    HSS -> BLE [label=1]
+    HSS -> SEN [label=5]
+    HSS -> PCB [label=5]
+
+    PCB -> SWF [label=10]
+    PCB -> BCO [label=5]
+    PCB -> PE [label=60]
+    PCB -> BGO [label=1]
+
+    SEN -> TRN [label=20]
+    SEN -> H [label=10]
+    SEN -> N [label=10]
+
+    BLE -> NA [label=1]
+    BLE -> CL [label=1]
+    BLE -> O [label=1]
+
+    BGO -> AU [label=4]
+    BGO -> FE [label=1]
+
+    BCO -> CU [label=1]
+    BCO -> PE [label=300]
+
+    TRN -> AL [label=1]
+    TRN -> SI [label=1]
+
+    SWF -> AL [label=1]
+    SWF -> SI [label=1]
+
+    N   [style=filled, fillcolor=yellow]
+    AU  [style=filled, fillcolor=yellow]
+
+}

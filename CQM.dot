@@ -1,0 +1,219 @@
+strict digraph CQM {
+
+    edge [dir="back"]
+
+    nodesep = 0.4
+    ranksep =0.8
+
+    subgraph cluster_UPF {
+        label = "UPF"
+        style = filled fillcolor=green 
+        CQM [shape=Mrecord, label="{1 CQM|2d12h}"]
+        TCU [shape=Mrecord, label="{1 TCU|1d14h}"]
+    }
+
+    CQM -> PSL [label=10]
+    CQM -> PSM [label=20]
+    CQM -> TI  [label=10]
+    CQM -> LIS [label=1]
+    CQM -> DEC [label=10]
+    CQM -> TCU [label=1]
+
+    TCU -> PSL [label=12]
+    TCU -> PSM [label=8]
+    TCU -> ADR [label=1]
+
+    subgraph cluster_APF {
+        label = "APF"
+        style = filled fillcolor=lightblue
+        LIS [shape=Mrecord, label="{1 LIS|2d12h}"]
+        WR  [shape=Mrecord, label="{1 WR|1d17h}"]
+        AIR [shape=Mrecord, label="{1 AIR|2d12h}"]
+        SAR [shape=Mrecord, label="{1 SAR|16h5m}"]
+    }
+
+    LIS -> WR [label=1]
+    LIS -> AIR [label=1]
+    LIS -> BMF [label=1]
+    LIS -> WAI [label=1]
+
+    WR -> FLP [label=12]
+    WR -> FC  [label=1]
+    WR -> AWF [label=1]
+    WR -> PCB [label=1]
+    WR -> SEN [label=1]
+    WR -> WAI [label=1]
+
+    AIR -> HCP [label=1]
+    AIR -> NS  [label=1]
+    AIR -> H2O [label=1]
+    AIR -> WAI [label=1]
+    AIR -> PCB [label=1]
+    AIR -> SAR [label=1]
+    AIR -> GV  [label=1]
+    AIR -> FC  [label=1]
+    AIR -> BAC [label=1]
+
+    SAR -> SEN [label=16]
+    SAR -> PCB [label=4]
+
+    subgraph cluster_PHF {
+        label = "PHF"
+        style = filled fillcolor=lightblue
+        ADR [shape=Mrecord, label="{1 ADR|21h36m}"]
+        BSC [shape=Mrecord, label="{1 BSC|21h36m}"]
+    }
+
+    ADR -> BSC [label=1]
+    ADR -> REA [label=20]
+    ADR -> MFK [label=4]
+    ADR -> DCM [label=2]
+
+    BSC -> DCM [label=1]
+    BSC -> MFK [label=1]
+    BSC -> SAR [label=1]
+
+    subgraph cluster_POL {
+        label = "POL"
+        style = filled fillcolor=green 
+        DEC [shape=Mrecord, label="{1 DEC|12h}"]
+        PG  [shape=Mrecord, label="{50 PG|8h54m}"]
+        EPO [shape=Mrecord, label="{50 EPO|1d}"]
+    }
+
+    DEC -> PG [label=150]
+    DEC -> EPO [label=70]
+
+    subgraph cluster_SCA {
+        label = "SCA"
+        style = filled fillcolor=lightblue 
+        SEN [shape=Mrecord, label="{20 SEN|6h 58m}"]
+        PCB [shape=Mrecord, label="{5 PCB|6h 43m}"]
+        TPU [shape=Mrecord, label="{4 TPU|15h36m}"]
+    }
+
+    PCB -> SWF [label=10]
+    PCB -> BCO [label=5]
+    PCB -> PE [label=60]
+    PCB -> BGO [label=1]
+
+    SEN -> TRN [label=20]
+    SEN -> H [label=10]
+    SEN -> N [label=10]
+
+    TPU -> MWF [label=4]
+    TPU -> TRN [label=4]
+    TPU -> CAP [label=4]
+    TPU -> HCC [label=4]
+
+    subgraph cluster_ELP {
+        label = "ELP"
+        style = filled fillcolor=lightblue
+        BMF [shape=Mrecord, label="{1 BMF|16h48m}"]
+        AWF [shape=Mrecord, label="{5 AWF|15h36m}"]
+    }
+
+    BMF -> TPU [label=1]
+    BMF -> FAN [label=1]
+    BMF -> MB  [label=1]
+    BMF -> DCL [label=1]
+
+    subgraph cluster_CLR {
+        label = "CLR"
+        style = filled fillcolor=green 
+        TRN [shape=Mrecord, label="{10 TRN|6h}"]
+        SWF [shape=Mrecord, label="{30 SWF|12h}"]   
+    }
+
+    TRN -> AL [label=1]
+    TRN -> SI [label=1]
+
+    SWF -> AL [label=1]
+    SWF -> SI [label=1]
+
+    subgraph cluster_FS {
+        label = FS
+        style = filled fillcolor=green 
+        BGO [shape=Mrecord, label="{5 BGO|9h 36m}"]
+        BCO [shape=Mrecord, label="{10 BCO|7h 12m}"]
+        MFK [shape=Mrecord, label="{8 MFK|2h53m}"]
+        HCC [shape=Mrecord, label="{10 HCC|7h12m}"]
+        RGO [shape=Mrecord, label="{5 RGO|9h36m}"]
+    }
+
+    BGO -> AU [label=4]
+    BGO -> FE [label=1]
+
+    BCO -> CU [label=1]
+    BCO -> PE [label=300]
+
+    MFK -> STL [label=1]
+
+    HCC -> RGO [label=1]
+    HCC -> PE  [label=300]
+
+    RGO -> AU [label=4]
+    RGO -> CU [label=1]
+    
+    subgraph cluster_LAB {
+        label = LAB
+        style = filled fillcolor=lightblue
+        BAC [shape=Mrecord, label="{10 BAC|2d5h}"]
+    }
+
+    BAC -> HCP [label=1]
+    BAC -> S [label=1]
+    BAC -> O [label=1]
+
+    subgraph cluster_CHP {
+        label = CHP
+        style = filled fillcolor=green
+        REA [shape=Mrecord, label="{10 REA|16h48m}"]
+        NS  [shape=Mrecord, label="{4 NS|4h48m}"]
+    }
+
+    BAC -> BRM [label=25]
+
+    NS -> H2O [label=2]
+    NS -> N   [label=2]
+    NS -> LST [label=1]
+
+    subgraph cluster_WEL {
+        label = WEL
+        style = filled fillcolor=green
+        FC [shape=Mrecord, label="{1 FC|9h36m}"]
+        GV [shape=Mrecord, label="{1 GV|6h}"]
+        FLP [shape=Mrecord, label="{6 FLP|12h}"]
+    }
+
+    FC -> AL [label=1]
+    FC -> HE [label=1]
+    FC -> BSE [label=1]
+    
+    GV -> AL [label=1]
+    GV -> HE [label=1]
+
+    FLP -> FE [label=1]
+    FLP -> AL [label=1]
+    FLP -> HE [label=1]
+
+    subgraph cluster_PPF {
+        label = PPF
+        style = filled fillcolor=green
+        PSL [shape=Mrecord, label="{1 PSL|14h24m}"]
+        PSM [shape=Mrecord, label="{1 PSM|9h36m}"]
+        DCM [shape=Mrecord, label="{2 DCM|12h}"]
+    }
+
+    PSL -> PG [label=40]
+
+    PSM -> PG [label=20]
+
+    DCM -> PSM [label=2]
+    DCM -> SFK [label=8]
+    DCM -> PG [label=20]
+    
+    N   [style=filled, fillcolor=yellow]
+    AU  [style=filled, fillcolor=yellow]
+
+}

@@ -1,0 +1,110 @@
+strict digraph PDA {
+
+    edge [dir="back"]
+    
+    PDA -> APF [label="32 x 14h24m"]
+    APF -> HPC
+    APF -> DA
+    
+    DA -> SE [label="1 x 1d12h"]
+    SE -> SAL
+    SE -> LD
+    SE -> SA
+    SE -> ROM
+    
+    SAL -> SD [label="1 x 1d12h"]
+    LD  -> SD [label="1 x 12h"]
+    SA  -> SD [label="1 x 1d"]
+    
+    ROM -> SCA [label="10 x 7h10m"]
+    SCA -> PSS
+    SCA -> BGC
+    SCA -> SI
+    
+    PSS -> PPF [label="1 x 4h48m"]
+    PPF -> PG
+    
+    BGC -> FS [label="10 x 7h12m"]
+    FS  -> BGO
+    FS  -> PE
+    
+    BGO -> FS [label="5 x 9h36m"]
+    FS -> AU
+    FS -> FE
+    
+    HPC -> ELP [label="1 x 8h24m"]
+    ELP -> MB
+    ELP -> DCS
+    ELP -> CD
+    
+    MB -> MCA [label="4 x 7h12m"]
+    MCA  -> RAM
+    MCA -> MPC
+    MCA -> PSM
+    MCA -> SFK
+    
+    RAM -> SCA [label="4 x 7h12m"]
+    SCA -> PSS
+    SCA -> CAP
+    SCA -> BCO
+    
+    MPC -> SCA [label="10 x 10h5m"]
+    SCA -> SWF
+    SCA -> TRN
+    SCA -> BCO
+    
+    SFK -> FS [label="16 x 2h53m"]
+    FS  -> FE
+    
+    PSM -> PPF [label="1 x 9h36m"]
+    PPF -> PG
+    
+    CD  -> ELP [label="1 x 16h5m"]
+    ELP -> DIS
+    ELP -> BCO
+    
+    BCO -> FS [label="10 x 7h12m"]
+    FS  -> CU
+    FS  -> PE
+    
+    TRN -> CLR [label="10 x 6h"]
+    CLR -> AL
+    CLR -> SI
+    
+    CAP -> CLR [label="15 x 9h36m"]
+    CLR -> SI
+    CLR -> FE
+    
+    SWF -> CLR [label="30 x 12h"]
+    CLR -> SI
+    CLR -> AL
+    
+    DIS -> MCA [label="1 x 16h5m"]
+    MCA -> LCR
+    MCA -> GL
+    
+    LCR -> CHP [label="1 x 15h36m"]
+    CHP -> SI
+    CHP -> O
+    
+    DCS -> PPF [label="2 x 7h12m"]
+    PPF -> SFK
+    PPF -> PG
+    PPF -> PSS
+    
+    SE [shape=Mrecord, label="{SE|ENG 30}", style=filled, fillcolor=pink]
+    SD [shape=Mrecord, label="{SD|TEC 50}", style=filled, fillcolor=lightblue]
+    SCA [shape=Mrecord, label="{SCA|TEC 30}", style=filled, fillcolor=lightblue]
+    PPF [shape=Mrecord, label="{PPF|SET 50}", style=filled, fillcolor=green]
+    FS  [shape=Mrecord, label="{FS|SET 50}", style=filled, fillcolor=green]
+    CLR [shape=Mrecord, label="{CLR|SET 25 TEC 15}", style=filled, fillcolor=green]
+    CHP [shape=Mrecord, label="{CHP|PIO 20 SET 60}", style=filled, fillcolor=green]
+    APF [shape=Mrecord, label="{APF|TEC 60 ENG 20}", style=filled, fillcolor=lightblue]
+    ELP [shape=Mrecord, label="{ELP|TEC 40}", style=filled, fillcolor=lightblue]
+    MCA [shape=Mrecord, label="{MCA|SET 20 TEC 20}", style=filled, fillcolor=lightblue]
+    PPF [shape=Mrecord, label="{PPF|SET 50}", style=filled, fillcolor=green]
+    
+    AU  [style=filled, fillcolor=yellow]
+    PDA [style=filled, fillcolor=pink]
+    
+}
