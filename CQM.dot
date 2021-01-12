@@ -84,12 +84,40 @@ strict digraph CQM {
     DEC -> PG [label=150]
     DEC -> EPO [label=70]
 
+    PG -> H [label=1]
+    PG -> C [label=1]
+    PG -> MG [label=1]
+
+    EPO -> H [label=1]
+    EPO -> C [label=1]
+    EPO -> O [label=1]
+    EPO -> CL [label=1]
+
+    subgraph cluster_SL {
+        label = "SL"
+        style = filled fillcolor=hotpink
+        WAI [shape=Mrecord, label="{1 WAI|2d}"]
+    }
+
+    WAI -> NN [label=1]
+    WAI -> ROM [label=1]
+    
+    subgraph cluster_SE {
+        label = "SE"
+        style = filled fillcolor=pink
+        NN [shape=Mrecord, label="{1 NN|1d12h}"]
+    }
+
+    NN -> BAI [label=1]
+    NN -> MLI [label=1]
+    
     subgraph cluster_SCA {
         label = "SCA"
         style = filled fillcolor=lightblue 
         SEN [shape=Mrecord, label="{20 SEN|6h 58m}"]
         PCB [shape=Mrecord, label="{5 PCB|6h 43m}"]
         TPU [shape=Mrecord, label="{4 TPU|15h36m}"]
+        ROM [shape=Mrecord, label="{10 ROM|7h12m}"]
     }
 
     PCB -> SWF [label=10]
@@ -106,6 +134,10 @@ strict digraph CQM {
     TPU -> CAP [label=4]
     TPU -> HCC [label=4]
 
+    ROM -> PSS [label=10]
+    ROM -> BGC [label=10]
+    ROM -> SI  [label=10]
+
     subgraph cluster_ELP {
         label = "ELP"
         style = filled fillcolor=lightblue
@@ -117,6 +149,10 @@ strict digraph CQM {
     BMF -> FAN [label=1]
     BMF -> MB  [label=1]
     BMF -> DCL [label=1]
+
+    AWF -> MAG [label=1]
+    AWF -> BAC [label=10]
+    AWF -> PE  [label=10]
 
     subgraph cluster_CLR {
         label = "CLR"
@@ -172,7 +208,7 @@ strict digraph CQM {
         NS  [shape=Mrecord, label="{4 NS|4h48m}"]
     }
 
-    BAC -> BRM [label=25]
+    REA -> BRM [label=25]
 
     NS -> H2O [label=2]
     NS -> N   [label=2]
